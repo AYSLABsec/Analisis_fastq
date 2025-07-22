@@ -1,4 +1,4 @@
-# Pipeline de Secuenciación y Filogenia de gyrA
+# Pipeline de Secuenciación y Filogenia
 
 Este repositorio proporciona una **pipeline** completa para:
 
