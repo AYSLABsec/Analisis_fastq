@@ -13,16 +13,19 @@ Este repositorio proporciona una **pipeline** completa para:
 
 ## 📂 Estructura del repositorio
 
-- **`analisis_seq.sh`**  
+- **`pipeline_consensos.sh`**  
   Script Bash que:
   - Concatena lecturas por barcode  
   - Selecciona la lectura más larga como referencia temporal  
   - Realiza alineamiento con **minimap2** + **samtools**  
   - Llama consensos con **medaka**  
   - Construye y consulta base BLAST  
-  - Genera `replacements.tsv` (barcode → `barcode__especie__identidad%`)  
+  - Genera `replacements.tsv` (barcode → `barcode__especie__identidad%`)
+
+- **`pipeline_arbol.sh`**  
+  Script Bash que:
   - Alinea consensos con **MAFFT**  
-  - Construye árbol con **FastTree** (`tree_fixed.nwk`)
+  - Construye árbol con **IQ-Tree** (`phylo.treefile`)
 
 - **`pipeline_report.py`**  
   Script Python que:
@@ -49,7 +52,7 @@ Este repositorio proporciona una **pipeline** completa para:
 - **Linux/macOS** (o Windows con ajustes en `open_file()`)  
 - **Python 3.8+** (`pip install -r requirements.txt`)  
 - **Email válido** para NCBI Entrez (configurar en el script)  
-- Herramientas en `$PATH`: `medaka`, `minimap2`, `samtools`, `seqkit`, `mafft`, `FastTree`, `blast+`
+- Herramientas en `$PATH`: `medaka`, `minimap2`, `samtools`, `seqkit`, `mafft`, `IQ-Tree, `blast+`
 
 ---
 
@@ -63,7 +66,7 @@ Este repositorio proporciona una **pipeline** completa para:
 
 2. **Ejecutar** el pipeline Bash:
    ```bash
-   chmod +x analisis_seq.sh
+   chmod +x pipeline_consensos.sh
    bash analisis_seq.sh /ruta/a/tu/carpeta_de_lecturas
    ```
    Esto genera en `pipeline_output/`:
